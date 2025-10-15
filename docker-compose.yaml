@@ -1,0 +1,15 @@
+services:
+  mcp-server-productive:
+    build:
+      context: .
+      dockerfile: docker/server/Dockerfile
+      platforms:
+        - linux/amd64
+    image: mcp-server-productive:latest
+    container_name: mcp-server-productive
+    environment:
+      - PRODUCTIVE_API_TOKEN=${PRODUCTIVE_API_TOKEN}
+      - PRODUCTIVE_ORG_ID=${PRODUCTIVE_API_TOKEN}
+    ports:
+      - "9000:9000"
+    restart: unless-stopped
